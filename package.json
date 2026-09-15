@@ -1,0 +1,29 @@
+{
+  "name": "pixel-hunter",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently --names \"VITE,API\" --prefix-colors \"cyan,yellow\" \"vite\" \"node server/server.js\"",
+    "dev:client": "vite",
+    "dev:server": "node server/server.js",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.7"
+  }
+}
