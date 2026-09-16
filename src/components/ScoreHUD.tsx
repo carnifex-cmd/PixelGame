@@ -28,7 +28,10 @@ export const ScoreHUD: React.FC<ScoreHUDProps> = ({
     <div className="hud-top">
       {/* Challenge Index */}
       <div className="hud-stat-box">
-        <span className="hud-label">SCENARIO</span>
+        <span className="hud-label">
+          <span className="lbl-full">SCENARIO</span>
+          <span className="lbl-short">SCN</span>
+        </span>
         <span className="hud-value">
           {currentIndex + 1}
           <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>/ {totalChallenges}</span>
@@ -37,7 +40,10 @@ export const ScoreHUD: React.FC<ScoreHUDProps> = ({
 
       {/* Potential Score on this challenge */}
       <div className="hud-stat-box">
-        <span className="hud-label">POTENTIAL VALUE</span>
+        <span className="hud-label">
+          <span className="lbl-full">POTENTIAL VALUE</span>
+          <span className="lbl-short">VALUE</span>
+        </span>
         <span className="hud-value highlight-cyan">
           +{currentPotentialScore}
           <span style={{ fontSize: '0.75rem', color: 'var(--cyan-neon)' }}>PTS</span>
@@ -46,7 +52,10 @@ export const ScoreHUD: React.FC<ScoreHUDProps> = ({
 
       {/* Tile Reveal Stats */}
       <div className="hud-stat-box">
-        <span className="hud-label">TILES REVEALED</span>
+        <span className="hud-label">
+          <span className="lbl-full">TILES REVEALED</span>
+          <span className="lbl-short">TILES</span>
+        </span>
         <span className="hud-value">
           {revealedCount}
           <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>/ {totalTiles}</span>
@@ -55,7 +64,10 @@ export const ScoreHUD: React.FC<ScoreHUDProps> = ({
 
       {/* Timer with Progress Bar */}
       <div className="hud-stat-box">
-        <span className="hud-label">SCAN WINDOW</span>
+        <span className="hud-label">
+          <span className="lbl-full">SCAN WINDOW</span>
+          <span className="lbl-short">TIME</span>
+        </span>
         <div className="timer-container">
           <div className="timer-bar-track">
             <div
@@ -71,7 +83,10 @@ export const ScoreHUD: React.FC<ScoreHUDProps> = ({
 
       {/* Overall Session Score */}
       <div className="hud-stat-box" style={{ textAlign: 'right' }}>
-        <span className="hud-label">SESSION SCORE</span>
+        <span className="hud-label">
+          <span className="lbl-full">SESSION SCORE</span>
+          <span className="lbl-short">SCORE</span>
+        </span>
         <span className="hud-value highlight-emerald">
           {totalScore.toLocaleString()}
         </span>

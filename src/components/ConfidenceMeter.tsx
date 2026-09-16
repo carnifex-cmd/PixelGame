@@ -32,14 +32,16 @@ export const ConfidenceMeter: React.FC<ConfidenceMeterProps> = ({
   const revealRatio = totalTiles > 0 ? Math.round((revealedCount / totalTiles) * 100) : 0;
 
   return (
-    <div className="confidence-meter-container" role="meter" aria-valuenow={potentialScore} aria-valuemin={100} aria-valuemax={1000}>
+    <div className="confidence-meter-container" role="meter" aria-label="Confidence / score meter" aria-valuenow={potentialScore} aria-valuemin={100} aria-valuemax={1000}>
       <div className="confidence-meta-row">
         <div className="confidence-title">
           <span className="meter-pulse-dot" />
-          CONFIDENCE / SCORE METER
+          <span className="lbl-full">CONFIDENCE / SCORE METER</span>
         </div>
         <div className="confidence-value-tag">
-          CURRENT YIELD: <span className={`points-val ${colorClass}`}>{potentialScore}</span> / {maxScore} PTS
+          <span className="lbl-full">CURRENT YIELD: </span>
+          <span className={`points-val ${colorClass}`}>{potentialScore}</span> / {maxScore}
+          <span className="lbl-full"> PTS</span>
         </div>
       </div>
 
@@ -56,15 +58,18 @@ export const ConfidenceMeter: React.FC<ConfidenceMeterProps> = ({
 
       <div className="confidence-subtext-row">
         <span>
-          Reveal Penalty: -{revealRatio}% ({revealedCount}/{totalTiles} tiles open)
+          <span className="lbl-full">Reveal Penalty: </span>-{revealRatio}%
+          <span className="lbl-full"> ({revealedCount}/{totalTiles} tiles open)</span>
+          <span className="lbl-short"> · {revealedCount}/{totalTiles}</span>
         </span>
         {revealBudget !== undefined && (
           <span style={{ color: revealedCount >= revealBudget ? 'var(--ruby-danger)' : 'var(--amber-alert)' }}>
-            Reveal Budget: {Math.max(0, revealBudget - revealedCount)} remaining
+            <span className="lbl-full">Reveal Budget: {Math.max(0, revealBudget - revealedCount)} remaining</span>
+            <span className="lbl-short">BUDGET {Math.max(0, revealBudget - revealedCount)}</span>
           </span>
         )}
         <span>
-          Speed Multiplier: {(0.5 + 0.5 * (timeRemaining / timeLimit)).toFixed(2)}x
+          <span className="lbl-full">Speed Multiplier: </span>{(0.5 + 0.5 * (timeRemaining / timeLimit)).toFixed(2)}x
         </span>
       </div>
     </div>

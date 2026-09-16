@@ -30,9 +30,9 @@ export const Header: React.FC<HeaderProps> = ({
 
   const handleToggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
+      document.documentElement.requestFullscreen?.().catch(() => {});
     } else {
-      document.exitFullscreen().catch(() => {});
+      document.exitFullscreen?.().catch(() => {});
     }
   };
 
@@ -109,7 +109,7 @@ export const Header: React.FC<HeaderProps> = ({
         </button>
 
         <button
-          className="action-btn icon-only"
+          className="action-btn icon-only fullscreen-btn"
           onClick={handleToggleFullscreen}
           title={isFullscreen ? 'Exit Fullscreen [F]' : 'Enter Fullscreen [F]'}
           aria-label={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
