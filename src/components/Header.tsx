@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { audio } from '../utils/audio';
+import { toggleFullscreen } from '../utils/fullscreen';
 
 interface HeaderProps {
   onOpenHelp: () => void;
@@ -29,11 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const handleToggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen?.().catch(() => {});
-    } else {
-      document.exitFullscreen?.().catch(() => {});
-    }
+    toggleFullscreen();
   };
 
   return (

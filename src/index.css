@@ -1433,14 +1433,14 @@ html, body {
     gap: 0.35rem;
     flex-shrink: 0;
   }
-  .action-btn {
+  .header-actions .action-btn {
     font-size: 0;
     gap: 0;
     width: 36px;
     height: 34px;
     padding: 0;
   }
-  .action-btn.icon-only {
+  .header-actions .action-btn.icon-only {
     width: 36px;
   }
   .fullscreen-btn {

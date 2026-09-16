@@ -13,6 +13,7 @@ import { LeaderboardModal } from './components/LeaderboardModal';
 import { HelpModal } from './components/HelpModal';
 import { calculateChallengeScore } from './utils/scoring';
 import { audio } from './utils/audio';
+import { toggleFullscreen } from './utils/fullscreen';
 
 type GameState = 'IDLE' | 'PLAYING' | 'FEEDBACK' | 'RESULT';
 
@@ -221,6 +222,18 @@ export const App: React.FC = () => {
   // Keyboard shortcut listener
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Shortcuts are single letters, so they must not fire while the player is
+      // typing their alias on the result screen. Escape still gets through.
+      const target = e.target as HTMLElement | null;
+      const isTyping =
+        !!target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.isContentEditable);
+      if (isTyping && e.key !== 'Escape') {
+        return;
+      }
+
       if (e.key === 'Escape') {
         setIsHelpOpen(false);
         setIsLeaderboardOpen(false);
@@ -239,11 +252,7 @@ export const App: React.FC = () => {
         return;
       }
       if (e.key.toLowerCase() === 'f') {
-        if (!document.fullscreenElement) {
-          document.documentElement.requestFullscreen().catch(() => {});
-        } else {
-          document.exitFullscreen().catch(() => {});
-        }
+        toggleFullscreen();
         return;
       }
 
